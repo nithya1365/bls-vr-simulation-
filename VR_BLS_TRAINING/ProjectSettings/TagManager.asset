@@ -4,8 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - UMAKeepChain
-  - UMAIgnore
+  - UpperPadZone
+  - LowerPadZone
   layers:
   - Default
   - TransparentFX
