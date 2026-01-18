@@ -4,26 +4,30 @@ public class VictimWalkAndCollapse : MonoBehaviour
 {
     public float walkSpeed = 1.2f;
     public float walkDuration = 4f;
-
     private float timer = 0f;
     private bool collapsed = false;
-
     private Rigidbody rb;
     private Animator anim;
+
+    [Header("Scene Safety Integration")]
+    public SceneSafetyManager sceneSafetyManager;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
+
+        if (sceneSafetyManager == null)
+        {
+            sceneSafetyManager = FindObjectOfType<SceneSafetyManager>();
+        }
     }
 
     void Update()
     {
         if (collapsed) return;
-
         timer += Time.deltaTime;
 
-        // Move victim forward
         transform.Translate(Vector3.forward * walkSpeed * Time.deltaTime, Space.Self);
 
         if (timer >= walkDuration)
@@ -35,16 +39,33 @@ public class VictimWalkAndCollapse : MonoBehaviour
     void Collapse()
     {
         collapsed = true;
+        Debug.Log("Victim collapsed!");
 
-        // Stop walking animation
         if (anim != null)
-            anim.enabled = false;
+        {
+            anim.SetTrigger("Collapse");
+        }
 
-        // Enable physics
-        rb.isKinematic = false;
-        rb.useGravity = true;
+        if (rb != null)
+        {
+            rb.useGravity = true;
+            rb.isKinematic = false;
+        }
 
-        // Add slight forward fall
-        rb.AddTorque(-transform.right * 25f, ForceMode.Impulse);
+        StartCoroutine(TriggerSceneSafetyAfterDelay());
+    }
+
+    System.Collections.IEnumerator TriggerSceneSafetyAfterDelay()
+    {
+        yield return new WaitForSeconds(2f); // Wait 2 seconds
+
+        if (sceneSafetyManager != null)
+        {
+            sceneSafetyManager.TriggerSceneSafetyModule();
+        }
+        else
+        {
+            Debug.LogError("Scene Safety Manager not found!");
+        }
     }
 }
