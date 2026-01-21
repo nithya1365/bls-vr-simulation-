@@ -25,4 +25,10 @@ public class AEDController : MonoBehaviour
     {
         Debug.Log("Shock Delivered");
     }
+
+    public void OnAEDPowerOn()
+    {
+        Debug.Log("AED ON button pressed");
+    }
+
 }
