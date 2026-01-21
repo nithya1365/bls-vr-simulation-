@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Events;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class SceneSafetyManager : MonoBehaviour
 {
@@ -38,8 +39,15 @@ public class SceneSafetyManager : MonoBehaviour
     public float completionTime;
     public int safetyScore = 0;
 
+    [Header("XR SETUP")]
+    public Canvas uiCanvas;
+    public float canvasDistance = 2f;
+    public Transform xrRig; // Assign XR Origin/Rig 
+
     void Start()
     {
+        SetupXRCanvas();
+
         if (safetyWarningPanel != null)
             safetyWarningPanel.SetActive(false);
 
@@ -50,9 +58,84 @@ public class SceneSafetyManager : MonoBehaviour
         LockEmergencyFeatures();
     }
 
+    void SetupXRCanvas()
+    {
+        if (uiCanvas == null)
+        {
+            uiCanvas = GetComponentInParent<Canvas>();
+            if (uiCanvas == null)
+            {
+                Debug.LogWarning("No Canvas found! Make sure UI is on a Canvas.");
+                return;
+            }
+        }
+
+        // Set canvas to World Space for XR
+        uiCanvas.renderMode = RenderMode.WorldSpace;
+
+        // Scale down the canvas for VR
+        uiCanvas.transform.localScale = Vector3.one * 0.001f;
+
+        // Add GraphicRaycaster if not present
+        if (uiCanvas.GetComponent<GraphicRaycaster>() == null)
+        {
+            uiCanvas.gameObject.AddComponent<GraphicRaycaster>();
+        }
+
+        // Add TrackedDeviceGraphicRaycaster for XR
+        if (uiCanvas.GetComponent<TrackedDeviceGraphicRaycaster>() == null)
+        {
+            var trackedRaycaster = uiCanvas.gameObject.AddComponent<TrackedDeviceGraphicRaycaster>();
+            // Remove standard GraphicRaycaster if TrackedDevice version is added
+            var standardRaycaster = uiCanvas.GetComponent<GraphicRaycaster>();
+            if (standardRaycaster != null && !(standardRaycaster is TrackedDeviceGraphicRaycaster))
+            {
+                Destroy(standardRaycaster);
+            }
+        }
+
+        PositionCanvasInFrontOfPlayer();
+    }
+
+    void PositionCanvasInFrontOfPlayer()
+    {
+        if (uiCanvas == null) return;
+
+        // Find XR Rig if not assigned
+        if (xrRig == null)
+        {
+            GameObject xrOrigin = GameObject.Find("XR Origin") ?? GameObject.Find("XR Rig");
+            if (xrOrigin != null)
+            {
+                xrRig = xrOrigin.transform;
+            }
+            else
+            {
+                // Try to find camera
+                Camera mainCam = Camera.main;
+                if (mainCam != null)
+                {
+                    xrRig = mainCam.transform.parent;
+                }
+            }
+        }
+
+        if (xrRig != null)
+        {
+            // Position canvas in front of player
+            Vector3 forward = xrRig.forward;
+            forward.y = 0; // Keep it level
+            forward.Normalize();
+
+            uiCanvas.transform.position = xrRig.position + forward * canvasDistance + Vector3.up * 1.5f;
+            uiCanvas.transform.rotation = Quaternion.LookRotation(forward);
+        }
+    }
+
     public void TriggerSceneSafetyModule()
     {
         Debug.Log("SCENE SAFETY MODULE STARTED");
+        PositionCanvasInFrontOfPlayer(); // Reposition UI when triggered
         InitializeSceneSafety();
     }
 
