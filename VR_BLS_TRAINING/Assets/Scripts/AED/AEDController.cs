@@ -5,11 +5,15 @@ public class AEDController : MonoBehaviour
     public AEDPad pad1;
     public AEDPad pad2;
     public GameObject shockButton;
+    [Header("AUDIO")]
+    public AudioClip aedOnAudio;
+    private AudioSource audioSource;
 
     void Start()
     {
         // Shock button should be hidden at start
         shockButton.SetActive(false);
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -29,6 +33,10 @@ public class AEDController : MonoBehaviour
     public void OnAEDPowerOn()
     {
         Debug.Log("AED ON button pressed");
-    }
 
+        if (audioSource != null && aedOnAudio != null)
+        {
+            audioSource.PlayOneShot(aedOnAudio);
+        }
+    }
 }

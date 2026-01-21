@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Events;
-using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.XR.Interaction.Toolkit.UI;
 
 public class SceneSafetyManager : MonoBehaviour
 {
@@ -42,7 +42,7 @@ public class SceneSafetyManager : MonoBehaviour
     [Header("XR SETUP")]
     public Canvas uiCanvas;
     public float canvasDistance = 2f;
-    public Transform xrRig; // Assign XR Origin/Rig 
+    public Transform xrRig;
 
     void Start()
     {
@@ -54,7 +54,6 @@ public class SceneSafetyManager : MonoBehaviour
         if (safeZoneIndicator != null)
             safeZoneIndicator.SetActive(false);
 
-        // Lock features immediately
         LockEmergencyFeatures();
     }
 
@@ -70,28 +69,19 @@ public class SceneSafetyManager : MonoBehaviour
             }
         }
 
-        // Set canvas to World Space for XR
         uiCanvas.renderMode = RenderMode.WorldSpace;
-
-        // Scale down the canvas for VR
         uiCanvas.transform.localScale = Vector3.one * 0.001f;
 
-        // Add GraphicRaycaster if not present
-        if (uiCanvas.GetComponent<GraphicRaycaster>() == null)
+        GraphicRaycaster standardRaycaster = uiCanvas.GetComponent<GraphicRaycaster>();
+        if (standardRaycaster != null)
         {
-            uiCanvas.gameObject.AddComponent<GraphicRaycaster>();
+            DestroyImmediate(standardRaycaster);
         }
 
-        // Add TrackedDeviceGraphicRaycaster for XR
         if (uiCanvas.GetComponent<TrackedDeviceGraphicRaycaster>() == null)
         {
-            var trackedRaycaster = uiCanvas.gameObject.AddComponent<TrackedDeviceGraphicRaycaster>();
-            // Remove standard GraphicRaycaster if TrackedDevice version is added
-            var standardRaycaster = uiCanvas.GetComponent<GraphicRaycaster>();
-            if (standardRaycaster != null && !(standardRaycaster is TrackedDeviceGraphicRaycaster))
-            {
-                Destroy(standardRaycaster);
-            }
+            uiCanvas.gameObject.AddComponent<TrackedDeviceGraphicRaycaster>();
+            Debug.Log("Added TrackedDeviceGraphicRaycaster for XR interaction");
         }
 
         PositionCanvasInFrontOfPlayer();
@@ -101,7 +91,6 @@ public class SceneSafetyManager : MonoBehaviour
     {
         if (uiCanvas == null) return;
 
-        // Find XR Rig if not assigned
         if (xrRig == null)
         {
             GameObject xrOrigin = GameObject.Find("XR Origin") ?? GameObject.Find("XR Rig");
@@ -109,25 +98,21 @@ public class SceneSafetyManager : MonoBehaviour
             {
                 xrRig = xrOrigin.transform;
             }
-            else
+            else if (Camera.main != null)
             {
-                // Try to find camera
-                Camera mainCam = Camera.main;
-                if (mainCam != null)
-                {
-                    xrRig = mainCam.transform.parent;
-                }
+                xrRig = Camera.main.transform;
             }
         }
 
         if (xrRig != null)
         {
-            // Position canvas in front of player
             Vector3 forward = xrRig.forward;
-            forward.y = 0; // Keep it level
+            forward.y = 0;
             forward.Normalize();
 
-            uiCanvas.transform.position = xrRig.position + forward * canvasDistance + Vector3.up * 1.5f;
+            uiCanvas.transform.position =
+                xrRig.position + forward * canvasDistance + Vector3.up * 1.5f;
+
             uiCanvas.transform.rotation = Quaternion.LookRotation(forward);
         }
     }
@@ -135,27 +120,22 @@ public class SceneSafetyManager : MonoBehaviour
     public void TriggerSceneSafetyModule()
     {
         Debug.Log("SCENE SAFETY MODULE STARTED");
-        PositionCanvasInFrontOfPlayer(); // Reposition UI when triggered
+        PositionCanvasInFrontOfPlayer();
         InitializeSceneSafety();
     }
 
     void InitializeSceneSafety()
     {
-        // Lock CPR and AED features
         LockEmergencyFeatures();
 
-        // now show warning (after collapse)
         if (safetyWarningPanel != null)
             safetyWarningPanel.SetActive(true);
 
-        // Hide safe zone
         if (safeZoneIndicator != null)
             safeZoneIndicator.SetActive(false);
 
-        // Set initial instruction
         UpdateInstruction("SCENE IS UNSAFE! Clear the area before helping the victim.");
 
-        // Setup buttons
         if (clearCrowdButton != null)
         {
             clearCrowdButton.onClick.RemoveAllListeners();
@@ -179,9 +159,8 @@ public class SceneSafetyManager : MonoBehaviour
 
         startTime = Time.time;
 
-        // Set progress to 0
         if (progressBar != null)
-            progressBar.value = 0;
+            progressBar.value = 0f;
     }
 
     public void ClearCrowd()
@@ -192,9 +171,7 @@ public class SceneSafetyManager : MonoBehaviour
         crowdCleared = true;
 
         if (crowdGroup != null)
-        {
             StartCoroutine(MoveAwayAndDisableCrowd());
-        }
 
         clearCrowdButton.interactable = false;
         UpdateInstruction("Crowd cleared. Now remove obstacles from the area.");
@@ -202,7 +179,6 @@ public class SceneSafetyManager : MonoBehaviour
         if (removeObstaclesButton != null)
             removeObstaclesButton.interactable = true;
 
-        // Update progress
         if (progressBar != null)
             progressBar.value = 0.33f;
     }
@@ -215,21 +191,18 @@ public class SceneSafetyManager : MonoBehaviour
         obstaclesRemoved = true;
 
         if (obstacles != null)
-        {
             StartCoroutine(MoveObstaclesAside());
-        }
 
         removeObstaclesButton.interactable = false;
 
         if (safeZoneIndicator != null)
             safeZoneIndicator.SetActive(true);
 
-        UpdateInstruction("Obstacles removed. Safe zone identified. Confirm scene is safe.");
+        UpdateInstruction("Obstacles removed. Confirm scene safety.");
 
         if (confirmSafeButton != null)
             confirmSafeButton.interactable = true;
 
-        // Update progress
         if (progressBar != null)
             progressBar.value = 0.66f;
     }
@@ -249,7 +222,6 @@ public class SceneSafetyManager : MonoBehaviour
 
         UnlockEmergencyFeatures();
 
-        // Complete progress
         if (progressBar != null)
             progressBar.value = 1f;
 
@@ -262,22 +234,26 @@ public class SceneSafetyManager : MonoBehaviour
     {
         if (instructionText != null)
             instructionText.text = message;
-        Debug.Log($"[Instruction] {message}");
+
+        Debug.Log("[Instruction] " + message);
     }
 
     void LockEmergencyFeatures()
     {
         if (cprControlsUI != null)
             cprControlsUI.SetActive(false);
+
         if (aedSystemUI != null)
             aedSystemUI.SetActive(false);
-        Debug.Log("CPR and AED features LOCKED until scene is safe.");
+
+        Debug.Log("CPR and AED features LOCKED.");
     }
 
     void UnlockEmergencyFeatures()
     {
         if (cprControlsUI != null)
             cprControlsUI.SetActive(true);
+
         Debug.Log("CPR controls UNLOCKED.");
     }
 
@@ -291,8 +267,6 @@ public class SceneSafetyManager : MonoBehaviour
             safetyScore = 70;
         else
             safetyScore = 50;
-
-        Debug.Log($"Safety Score: {safetyScore}/100 (Time: {completionTime:F1}s)");
     }
 
     System.Collections.IEnumerator MoveAwayAndDisableCrowd()
@@ -305,53 +279,20 @@ public class SceneSafetyManager : MonoBehaviour
         Vector3[] startPositions = new Vector3[crowdMembers.Length];
 
         for (int i = 0; i < crowdMembers.Length; i++)
-        {
             startPositions[i] = crowdMembers[i].position;
-        }
 
-        // Move crowd backward
         while (elapsed < duration)
         {
             elapsed += Time.deltaTime;
-            float progress = elapsed / duration;
+            float t = elapsed / duration;
 
             for (int i = 1; i < crowdMembers.Length; i++)
             {
-                Vector3 directionAway = (crowdMembers[i].position - victimTransform.position).normalized;
-                directionAway.y = 0;
+                Vector3 dir = (crowdMembers[i].position - victimTransform.position).normalized;
+                dir.y = 0;
 
-                Vector3 targetPos = startPositions[i] + (directionAway * moveDistance);
-                crowdMembers[i].position = Vector3.Lerp(startPositions[i], targetPos, progress);
-            }
-
-            yield return null;
-        }
-
-        // Now fade and disable
-        yield return StartCoroutine(FadeAndDisableCrowd());
-        Debug.Log("Crowd moved back and faded out.");
-    }
-
-    System.Collections.IEnumerator FadeAndDisableCrowd()
-    {
-        float duration = 1f;
-        float elapsed = 0f;
-
-        Renderer[] crowdRenderers = crowdGroup.GetComponentsInChildren<Renderer>();
-
-        while (elapsed < duration)
-        {
-            elapsed += Time.deltaTime;
-            float alpha = 1 - (elapsed / duration);
-
-            foreach (Renderer rend in crowdRenderers)
-            {
-                if (rend.material.HasProperty("_Color"))
-                {
-                    Color color = rend.material.color;
-                    color.a = alpha;
-                    rend.material.color = color;
-                }
+                crowdMembers[i].position =
+                    Vector3.Lerp(startPositions[i], startPositions[i] + dir * moveDistance, t);
             }
 
             yield return null;
@@ -366,44 +307,24 @@ public class SceneSafetyManager : MonoBehaviour
         float elapsed = 0f;
         float moveDistance = 3f;
 
-        Vector3[] startPositions = new Vector3[obstacles.Length];
-        Vector3[] targetPositions = new Vector3[obstacles.Length];
+        Vector3[] startPos = new Vector3[obstacles.Length];
 
         for (int i = 0; i < obstacles.Length; i++)
-        {
-            if (obstacles[i] != null)
-            {
-                startPositions[i] = obstacles[i].transform.position;
-                targetPositions[i] = startPositions[i] + (Vector3.right * moveDistance);
-            }
-        }
+            startPos[i] = obstacles[i].transform.position;
 
         while (elapsed < duration)
         {
             elapsed += Time.deltaTime;
-            float progress = elapsed / duration;
+            float t = elapsed / duration;
 
             for (int i = 0; i < obstacles.Length; i++)
-            {
-                if (obstacles[i] != null)
-                {
-                    obstacles[i].transform.position = Vector3.Lerp(startPositions[i], targetPositions[i], progress);
-                }
-            }
+                obstacles[i].transform.position =
+                    Vector3.Lerp(startPos[i], startPos[i] + Vector3.right * moveDistance, t);
 
             yield return null;
         }
-
-        Debug.Log("Obstacles moved aside.");
     }
 
-    public bool IsSceneSafe()
-    {
-        return isSceneSafe;
-    }
-
-    public int GetSafetyScore()
-    {
-        return safetyScore;
-    }
+    public bool IsSceneSafe() => isSceneSafe;
+    public int GetSafetyScore() => safetyScore;
 }

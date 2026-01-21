@@ -296,6 +296,9 @@ MonoBehaviour:
       m_Calls: []
   completionTime: 0
   safetyScore: 0
+  uiCanvas: {fileID: 0}
+  canvasDistance: 2
+  xrRig: {fileID: 0}
 --- !u!4 &85891314
 Transform:
   m_ObjectHideFlags: 0
@@ -894,12 +897,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 384799320}
   m_CullTransparentMesh: 1
+--- !u!1 &493053779 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2451926726223815311, guid: ee7c0726c1669e942bee6bff0d3a8e96, type: 3}
+  m_PrefabInstance: {fileID: 2030341936}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &499562602 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7030097494855326485, guid: ee7c0726c1669e942bee6bff0d3a8e96, type: 3}
   m_PrefabInstance: {fileID: 2030341936}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1940621004}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4ad92d0140f32904880024685d30a5c8, type: 3}
@@ -1031,7 +1039,6 @@ GameObject:
   - component: {fileID: 618367914}
   - component: {fileID: 618367913}
   - component: {fileID: 618367912}
-  - component: {fileID: 618367911}
   m_Layer: 0
   m_Name: OnButton (1)
   m_TagString: Untagged
@@ -1054,19 +1061,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 499562603}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &618367911
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 618367909}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9f6a2ff13285ff4b8600c73edcc2157, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controller: {fileID: 499562602}
 --- !u!114 &618367912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1121,7 +1115,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 499562602}
         m_TargetAssemblyTypeName: AEDController, Assembly-CSharp
-        m_MethodName: DeliverShock
+        m_MethodName: OnAEDPowerOn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2058,6 +2052,28 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1167888384}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1184783293 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6812469148053031464, guid: ee7c0726c1669e942bee6bff0d3a8e96, type: 3}
+  m_PrefabInstance: {fileID: 2030341936}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce8c7ddf79953cb4d930be8c4107dfdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1283236621 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2436647886304859200, guid: ee7c0726c1669e942bee6bff0d3a8e96, type: 3}
+  m_PrefabInstance: {fileID: 2030341936}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce8c7ddf79953cb4d930be8c4107dfdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1330548013
 GameObject:
   m_ObjectHideFlags: 0
@@ -2447,7 +2463,7 @@ MonoBehaviour:
   m_AllowHoverHapticsWhileSelecting: 1
   m_LineType: 0
   m_BlendVisualLinePoints: 1
-  m_MaxRaycastDistance: 30
+  m_MaxRaycastDistance: 10
   m_RayOriginTransform: {fileID: 0}
   m_ReferenceFrame: {fileID: 0}
   m_Velocity: 16
@@ -4491,6 +4507,107 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1940621004 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5014035117028063175, guid: ee7c0726c1669e942bee6bff0d3a8e96, type: 3}
+  m_PrefabInstance: {fileID: 2030341936}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1940621005
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1940621004}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 0
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1957416748
 GameObject:
   m_ObjectHideFlags: 0
@@ -4632,6 +4749,22 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: fe6344248dcb85546b9d3b4cd84f5771, type: 2}
+    - target: {fileID: 7030097494855326485, guid: ee7c0726c1669e942bee6bff0d3a8e96, type: 3}
+      propertyPath: pad1
+      value: 
+      objectReference: {fileID: 1283236621}
+    - target: {fileID: 7030097494855326485, guid: ee7c0726c1669e942bee6bff0d3a8e96, type: 3}
+      propertyPath: pad2
+      value: 
+      objectReference: {fileID: 1184783293}
+    - target: {fileID: 7030097494855326485, guid: ee7c0726c1669e942bee6bff0d3a8e96, type: 3}
+      propertyPath: aedOnAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: bb94ac54334841a41a252a529aede128, type: 3}
+    - target: {fileID: 7030097494855326485, guid: ee7c0726c1669e942bee6bff0d3a8e96, type: 3}
+      propertyPath: shockButton
+      value: 
+      objectReference: {fileID: 493053779}
     - target: {fileID: 7258255655323608501, guid: ee7c0726c1669e942bee6bff0d3a8e96, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -4645,7 +4778,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1396151026159361093, guid: ee7c0726c1669e942bee6bff0d3a8e96, type: 3}
       insertIndex: -1
       addedObject: {fileID: 618367910}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5014035117028063175, guid: ee7c0726c1669e942bee6bff0d3a8e96, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1940621005}
   m_SourcePrefab: {fileID: 100100000, guid: ee7c0726c1669e942bee6bff0d3a8e96, type: 3}
 --- !u!1 &2049056975
 GameObject:
@@ -5362,7 +5498,7 @@ MonoBehaviour:
   m_AllowHoverHapticsWhileSelecting: 1
   m_LineType: 0
   m_BlendVisualLinePoints: 1
-  m_MaxRaycastDistance: 30
+  m_MaxRaycastDistance: 10
   m_RayOriginTransform: {fileID: 0}
   m_ReferenceFrame: {fileID: 0}
   m_Velocity: 16
