@@ -1,14 +1,34 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\varst\\Desktop\\VSCODE\\bls-vr-simulation-\\VR_BLS_TRAINING\\",
+  "WorkspaceRootPath": "D:\\prism-vr\\bls-vr-simulation-\\VR_BLS_TRAINING\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8B812E65-A915-EDAF-367E-33972BC37C94}|Assembly-CSharp.csproj|c:\\users\\varst\\desktop\\vscode\\bls-vr-simulation-\\vr_bls_training\\assets\\scripts\\victimwalkandcollapse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8B812E65-A915-EDAF-367E-33972BC37C94}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\victimwalkandcollapse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\prism-vr\\bls-vr-simulation-\\VR_BLS_TRAINING\\Assets\\Scripts\\CPR\\CPR.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\CPR\\CPR.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A5A2C35F-B9C5-3681-0483-C9209070A899}|Unity.XR.Hands.Samples.VisualizerSample.csproj|C:\\Users\\varst\\Desktop\\VSCODE\\bls-vr-simulation-\\VR_BLS_TRAINING\\assets\\samples\\xr hands\\1.4.3\\handvisualizer\\unity.xr.hands.samples.visualizersample.asmdef||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{A5A2C35F-B9C5-3681-0483-C9209070A899}|Unity.XR.Hands.Samples.VisualizerSample.csproj|solutionrelative:assets\\samples\\xr hands\\1.4.3\\handvisualizer\\unity.xr.hands.samples.visualizersample.asmdef||{3B902123-F8A7-4915-9F01-361F908088D0}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\prism-vr\\bls-vr-simulation-\\VR_BLS_TRAINING\\Assets\\Scripts\\AED\\AEDController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\AED\\AEDController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\prism-vr\\bls-vr-simulation-\\VR_BLS_TRAINING\\Assets\\Scripts\\SceneSafety\\SceneSafetyManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\SceneSafety\\SceneSafetyManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\prism-vr\\bls-vr-simulation-\\VR_BLS_TRAINING\\Assets\\Scripts\\AED\\OnButtonClick.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\AED\\OnButtonClick.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\prism-vr\\bls-vr-simulation-\\VR_BLS_TRAINING\\Assets\\Scripts\\AED\\ShockButtonClick.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\AED\\ShockButtonClick.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\prism-vr\\bls-vr-simulation-\\VR_BLS_TRAINING\\Assets\\Scripts\\VictimWalkAndCollapse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\VictimWalkAndCollapse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\prism-vr\\bls-vr-simulation-\\VR_BLS_TRAINING\\Assets\\Samples\\XR Hands\\1.4.3\\HandVisualizer\\Unity.XR.Hands.Samples.VisualizerSample.asmdef||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Samples\\XR Hands\\1.4.3\\HandVisualizer\\Unity.XR.Hands.Samples.VisualizerSample.asmdef||{3B902123-F8A7-4915-9F01-361F908088D0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,10 +43,79 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "CPR.cs",
+              "DocumentMoniker": "D:\\prism-vr\\bls-vr-simulation-\\VR_BLS_TRAINING\\Assets\\Scripts\\CPR\\CPR.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\CPR\\CPR.cs",
+              "ToolTip": "D:\\prism-vr\\bls-vr-simulation-\\VR_BLS_TRAINING\\Assets\\Scripts\\CPR\\CPR.cs",
+              "RelativeToolTip": "Assets\\Scripts\\CPR\\CPR.cs",
+              "ViewState": "AgIAAJQAAAAAAAAAAAAIwJ0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-21T10:37:55.993Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "OnButtonClick.cs",
+              "DocumentMoniker": "D:\\prism-vr\\bls-vr-simulation-\\VR_BLS_TRAINING\\Assets\\Scripts\\AED\\OnButtonClick.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\AED\\OnButtonClick.cs",
+              "ToolTip": "D:\\prism-vr\\bls-vr-simulation-\\VR_BLS_TRAINING\\Assets\\Scripts\\AED\\OnButtonClick.cs",
+              "RelativeToolTip": "Assets\\Scripts\\AED\\OnButtonClick.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-21T07:11:28.812Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ShockButtonClick.cs",
+              "DocumentMoniker": "D:\\prism-vr\\bls-vr-simulation-\\VR_BLS_TRAINING\\Assets\\Scripts\\AED\\ShockButtonClick.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\AED\\ShockButtonClick.cs",
+              "ToolTip": "D:\\prism-vr\\bls-vr-simulation-\\VR_BLS_TRAINING\\Assets\\Scripts\\AED\\ShockButtonClick.cs",
+              "RelativeToolTip": "Assets\\Scripts\\AED\\ShockButtonClick.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-21T07:05:37.08Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SceneSafetyManager.cs",
+              "DocumentMoniker": "D:\\prism-vr\\bls-vr-simulation-\\VR_BLS_TRAINING\\Assets\\Scripts\\SceneSafety\\SceneSafetyManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\SceneSafety\\SceneSafetyManager.cs",
+              "ToolTip": "D:\\prism-vr\\bls-vr-simulation-\\VR_BLS_TRAINING\\Assets\\Scripts\\SceneSafety\\SceneSafetyManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\SceneSafety\\SceneSafetyManager.cs",
+              "ViewState": "AgIAABwBAAAAAAAAAAAIwEoBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-21T06:51:32.371Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AEDController.cs",
+              "DocumentMoniker": "D:\\prism-vr\\bls-vr-simulation-\\VR_BLS_TRAINING\\Assets\\Scripts\\AED\\AEDController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\AED\\AEDController.cs",
+              "ToolTip": "D:\\prism-vr\\bls-vr-simulation-\\VR_BLS_TRAINING\\Assets\\Scripts\\AED\\AEDController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\AED\\AEDController.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAACoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-21T06:35:04.617Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "VictimWalkAndCollapse.cs",
-              "DocumentMoniker": "C:\\Users\\varst\\Desktop\\VSCODE\\bls-vr-simulation-\\VR_BLS_TRAINING\\Assets\\Scripts\\VictimWalkAndCollapse.cs",
+              "DocumentMoniker": "D:\\prism-vr\\bls-vr-simulation-\\VR_BLS_TRAINING\\Assets\\Scripts\\VictimWalkAndCollapse.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\VictimWalkAndCollapse.cs",
-              "ToolTip": "C:\\Users\\varst\\Desktop\\VSCODE\\bls-vr-simulation-\\VR_BLS_TRAINING\\Assets\\Scripts\\VictimWalkAndCollapse.cs",
+              "ToolTip": "D:\\prism-vr\\bls-vr-simulation-\\VR_BLS_TRAINING\\Assets\\Scripts\\VictimWalkAndCollapse.cs",
               "RelativeToolTip": "Assets\\Scripts\\VictimWalkAndCollapse.cs",
               "ViewState": "AgIAAB4AAAAAAAAAAAAAAC8AAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -35,14 +124,14 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
               "Title": "Unity.XR.Hands.Samples.VisualizerSample.asmdef",
-              "DocumentMoniker": "C:\\Users\\varst\\Desktop\\VSCODE\\bls-vr-simulation-\\VR_BLS_TRAINING\\Assets\\Samples\\XR Hands\\1.4.3\\HandVisualizer\\Unity.XR.Hands.Samples.VisualizerSample.asmdef",
+              "DocumentMoniker": "D:\\prism-vr\\bls-vr-simulation-\\VR_BLS_TRAINING\\Assets\\Samples\\XR Hands\\1.4.3\\HandVisualizer\\Unity.XR.Hands.Samples.VisualizerSample.asmdef",
               "RelativeDocumentMoniker": "Assets\\Samples\\XR Hands\\1.4.3\\HandVisualizer\\Unity.XR.Hands.Samples.VisualizerSample.asmdef",
-              "ToolTip": "C:\\Users\\varst\\Desktop\\VSCODE\\bls-vr-simulation-\\VR_BLS_TRAINING\\Assets\\Samples\\XR Hands\\1.4.3\\HandVisualizer\\Unity.XR.Hands.Samples.VisualizerSample.asmdef",
+              "ToolTip": "D:\\prism-vr\\bls-vr-simulation-\\VR_BLS_TRAINING\\Assets\\Samples\\XR Hands\\1.4.3\\HandVisualizer\\Unity.XR.Hands.Samples.VisualizerSample.asmdef",
               "RelativeToolTip": "Assets\\Samples\\XR Hands\\1.4.3\\HandVisualizer\\Unity.XR.Hands.Samples.VisualizerSample.asmdef",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001874|",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2026-01-17T10:07:27.378Z"
             }
           ]
