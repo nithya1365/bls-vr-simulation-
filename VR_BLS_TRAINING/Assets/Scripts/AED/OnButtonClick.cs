@@ -4,8 +4,20 @@ public class OnButtonClick : MonoBehaviour
 {
     public AEDController controller;
 
-    void OnMouseDown()
+    void Update()
     {
-        controller.OnAEDPowerOn();
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                if (hit.transform == transform)
+                {
+                    controller.OnAEDPowerOn();
+                }
+            }
+        }
     }
 }

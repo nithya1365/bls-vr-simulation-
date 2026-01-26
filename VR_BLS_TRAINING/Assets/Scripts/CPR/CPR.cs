@@ -70,6 +70,8 @@ public class CPR_HandTracking_Controller : MonoBehaviour
     /* ================= UPDATE ================= */
     void Update()
     {
+        Debug.Log("UPDATE  cpr is RUNNING");
+
         XRHand rightHand = handSubsystem.rightHand;
         if (!rightHand.isTracked) return;
 
